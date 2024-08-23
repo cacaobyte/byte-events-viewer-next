@@ -1,0 +1,17 @@
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+ <g>
+  <line transform="rotate(90.0678 -1.98955 14.0159) matrix(0.600819 -0.600819 0.600819 0.600819 1.95132 11.1074)" x1="7.12941" y1="13.53144" x2="15.12941" y2="13.53144" id="svg_52" fill="none" stroke="#f17e92"/>
+  <line transform="rotate(90 -13.9005 33.1997) matrix(0.600819 -0.600819 0.600819 0.600819 -7.79364 18.1894)" x1="3.85895" y1="14.59855" x2="11.85895" y2="14.59855" id="svg_51" fill="none" stroke="#f17e92"/>
+  <g id="svg_56" transform="rotate(45 -0.849543 26.101) matrix(0 -0.849687 0.849687 0 0.751955 30.4185)" stroke="null"/>
+  <g transform="rotate(45 8.60755 18.6964) matrix(0 -0.849687 0.849687 0 10.0895 20.24)" id="svg_57" stroke="null"/>
+  <g transform="rotate(45 -8.26947 16.6548) matrix(0 -0.849687 0.849687 0 -9.44192 21.0962)" id="svg_58" stroke="null"/>
+  <rect transform="matrix(0.600819 -0.600819 0.600819 0.600819 -1.854 1.9419)" width="8" height="3" x="8.74497" y="15.05458" rx="1.5" id="svg_7" stroke="#f17e92"/>
+  <rect transform="matrix(0.600819 -0.600819 0.600819 0.600819 -6.92005 19.6995)" width="8" height="3" x="8.53468" y="4.45266" rx="1.5" id="svg_5" stroke="#f17e92"/>
+  <rect transform="matrix(0.600819 -0.600819 0.600819 0.600819 4.47808 13.2552)" width="3" height="8" x="5.843" y="7.61686" rx="1.5" id="svg_1" stroke="#f17e92"/>
+  <rect transform="matrix(0.600819 -0.600819 0.600819 0.600819 -13.2741 8.38953)" width="3" height="8" x="16.53991" y="7.06601" rx="1.5" id="svg_3" stroke="#f17e92"/>
+  <line id="svg_10" y2="10.08763" x2="18.59457" y1="10.02206" x1="12.59457" stroke-width="2.5" stroke="#e21d48" fill="none"/>
+  <line id="svg_12" y2="10.07881" x2="7.43822" y1="10.01323" x1="1.43822" stroke-width="2.5" stroke="#e21d48" fill="none"/>
+  <line transform="rotate(90 10.082 4.48549)" id="svg_13" y2="4.51828" x2="13.08197" y1="4.45271" x1="7.08197" stroke-width="2.5" stroke="#e21d48" fill="none"/>
+  <line transform="rotate(90 10.012 15.5586)" id="svg_14" y2="15.59141" x2="13.01199" y1="15.52584" x1="7.01199" stroke-width="2.5" stroke="#e21d48" fill="none"/>
+ </g>
+</svg>
