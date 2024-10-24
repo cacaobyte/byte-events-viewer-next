@@ -1,15 +1,19 @@
-"use client"
+import * as React from "react"
+import { AuthProvider } from "@/context/auth-context"
+import { I18nProvider } from "@/context/i18n-context"
 
-import React from "react"
+import { TooltipProvider } from "../ui/tooltip"
+import { ThemeProvider } from "./theme-toggle/theme-provider"
 
-import SessionProvider from "./session-provider"
-import ThemeProvider from "./ThemeToggle/theme-provider"
-
-export default function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <SessionProvider>{children}</SessionProvider>
+        <TooltipProvider>
+          <I18nProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </I18nProvider>
+        </TooltipProvider>
       </ThemeProvider>
     </>
   )

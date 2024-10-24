@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils"
-import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle"
+import ThemeToggle from "@/components/layout/theme-toggle/theme-toggle"
 
 import { MobileSidebar } from "./mobile-sidebar"
 import { UserNav } from "./user-nav"

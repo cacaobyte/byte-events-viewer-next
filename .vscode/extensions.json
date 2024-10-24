@@ -1,9 +1,14 @@
 {
   "recommendations": [
+    "adpyke.codesnap",
+    "vivaxy.vscode-conventional-commits",
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
     "esbenp.prettier-vscode",
+    "usernamehw.errorlens",
     "bradlc.vscode-tailwindcss",
-    "usernamehw.errorlens"
+    "expo.vscode-expo",
+    "dcasella.monokai-plusplus"
   ]
 }

@@ -7,7 +7,7 @@ import NextTopLoader from "nextjs-toploader"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
-import Providers from "@/components/layout/providers"
+import { Providers } from "@/components/layout/providers"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
-  keywords: ["Next.js"],
+  keywords: ["Events", "Meetups", "Conferences", "Workshops"],
   authors: [
     {
       name: "Mario Arita",

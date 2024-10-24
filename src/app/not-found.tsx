@@ -20,11 +20,7 @@ export default function NotFound() {
         <Button onClick={() => router.back()} variant="default" size="lg">
           Ir atrás
         </Button>
-        <Button
-          onClick={() => router.push("/dashboard")}
-          variant="ghost"
-          size="lg"
-        >
+        <Button onClick={() => router.push("/")} variant="ghost" size="lg">
           Regresar al inicio
         </Button>
       </div>
