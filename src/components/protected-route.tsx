@@ -1,24 +1,30 @@
+"use client"
+
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { TranslationKeyPaths } from "@/context/i18n-context"
 
 import useAuth from "@/hooks/use-auth"
+import { useI18n } from "@/hooks/use-i18n"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 
 import { Icons } from "./icons"
 import { Skeleton } from "./ui/skeleton"
 
-const screenTitles = {
-  "/favorites": "Favoritos ❤️",
-  "/my-events": "Mis Eventos 🗓️",
-  "/notifications": "Notificaciones 🔔",
+const screenTitles: Record<string, TranslationKeyPaths> = {
+  "/favorites": "protected-route.favorites",
+  "/my-events": "protected-route.my-events",
+  "/notifications": "protected-route.notifications",
 }
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
   const { user } = useAuth()
   const router = useRouter()
+  const pathname = usePathname()
+  const i18n = useI18n()
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -62,11 +68,16 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
           </CardHeader>
           <CardContent>
             <h2 className="text-center text-lg font-semibold tracking-tight md:text-xl">
-              Continue with Vercel
+              {i18n.t("protected-route.title")}
             </h2>
-            <p className="text-center text-sm text-gray-500">
-              To use v0, create a Vercel account or log into an existing one.
-            </p>
+            <p
+              className="text-center text-sm text-gray-500"
+              dangerouslySetInnerHTML={{
+                __html: i18n.t("protected-route.description", {
+                  title: `<strong>${i18n.t(screenTitles[pathname] || "")}</strong>`,
+                }) as string,
+              }}
+            />
           </CardContent>
           <CardFooter className="flex flex-col gap-3">
             <Button className="w-full" variant="default" asChild>

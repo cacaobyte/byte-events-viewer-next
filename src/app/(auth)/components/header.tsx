@@ -23,12 +23,12 @@ export function Header() {
           {i18n.t("common.back")}
         </Button>
 
-        <nav>
+        {/* <nav>
           <Button variant="outline" className="mr-2">
             Log In
           </Button>
           <Button variant="default">Contact</Button>
-        </nav>
+        </nav> */}
       </header>
     </>
   )

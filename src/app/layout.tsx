@@ -10,6 +10,8 @@ import { Toaster } from "@/components/ui/toaster"
 import { Providers } from "@/components/layout/providers"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
+export const runtime = "edge"
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,

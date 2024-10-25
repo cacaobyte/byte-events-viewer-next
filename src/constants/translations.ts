@@ -74,6 +74,15 @@ export const translations = {
       "sign-up": "Sign up",
       "sign-in": "Sign in",
     },
+    "protected-route": {
+      title: "Welcome to Events Viewer",
+      description: "To access your {{title}}, logging in or create an account",
+      "sign-up": "Sign up",
+      "sign-in": "Sign in",
+      favorites: "Favorites ❤️",
+      "my-events": "My Events 🗓️",
+      notifications: "Notifications 🔔",
+    },
   },
   es: {
     welcome: "Hola",
@@ -152,6 +161,15 @@ export const translations = {
       description: "Inicia sesión o regístrate para acceder a tus eventos",
       "sign-up": "Registrarse",
       "sign-in": "Iniciar Sesión",
+    },
+    "protected-route": {
+      title: "Bienvenido a Events Viewer",
+      description: "Para acceder a {{title}}, inicia sesión o crea una cuenta",
+      "sign-up": "Registrarse",
+      "sign-in": "Iniciar Sesión",
+      favorites: "Favoritos ❤️",
+      "my-events": "Mis Eventos 🗓️",
+      notifications: "Notificaciones 🔔",
     },
   },
 }
