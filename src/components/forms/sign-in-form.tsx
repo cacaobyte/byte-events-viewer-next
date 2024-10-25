@@ -29,7 +29,8 @@ export function SignInForm() {
   const [loading, setLoading] = useState(false)
   const addUser = useUserStore((state) => state.addUser)
   const defaultValues = {
-    identifier: "example@email.com",
+    identifier: "",
+    password: "",
   }
   const i18n = useI18n()
 
@@ -59,7 +60,7 @@ export function SignInForm() {
 
   return (
     <>
-      <Card className="space-y-6 p-4 sm:w-[450px]">
+      <Card className="space-y-4 p-4 sm:w-[450px]">
         <CardHeader className="flex flex-col space-y-2 text-center">
           <Icons.logo className="mx-auto size-6" />
           <h1 className="text-2xl font-semibold tracking-tight">

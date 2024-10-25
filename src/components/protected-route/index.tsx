@@ -2,16 +2,16 @@
 
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { TranslationKeyPaths } from "@/context/i18n-context"
+import { usePathname } from "next/navigation"
+import { TranslationKeyPaths } from "@/context/i18n-provider"
 
 import useAuth from "@/hooks/use-auth"
 import { useI18n } from "@/hooks/use-i18n"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 
-import { Icons } from "./icons"
-import { Skeleton } from "./ui/skeleton"
+import { Icons } from "../icons"
+import { Skeleton } from "../ui/skeleton"
 
 const screenTitles: Record<string, TranslationKeyPaths> = {
   "/favorites": "protected-route.favorites",
@@ -22,7 +22,6 @@ const screenTitles: Record<string, TranslationKeyPaths> = {
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
   const { user } = useAuth()
-  const router = useRouter()
   const pathname = usePathname()
   const i18n = useI18n()
 
@@ -36,7 +35,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="bg-muted flex size-full items-center justify-center rounded-lg">
+      <div className="flex size-full items-center justify-center">
         <Card className="w-full max-w-md">
           <CardHeader className="flex items-center justify-center">
             <Skeleton className="h-12 w-20 rounded-lg" />
@@ -59,7 +58,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (!user) {
     return (
-      <div className="bg-muted flex size-full items-center justify-center rounded-lg">
+      <div className="flex size-full items-center justify-center">
         <Card className="w-full max-w-md">
           <CardHeader className="flex items-center justify-center">
             <div className="bg-primary flex items-center justify-center rounded-lg px-6 py-2">
@@ -82,12 +81,12 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
           <CardFooter className="flex flex-col gap-3">
             <Button className="w-full" variant="default" asChild>
               <Link href="/sign-up">
-                <span>Sign Up</span>
+                <span>{i18n.t("protected-route.sign-up")}</span>
               </Link>
             </Button>
             <Button className="w-full" variant="outline" asChild>
               <Link href="/sign-in">
-                <span>Sign In</span>
+                <span>{i18n.t("protected-route.sign-in")}</span>
               </Link>
             </Button>
           </CardFooter>

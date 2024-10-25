@@ -7,7 +7,7 @@ import {
   LogOut,
   MonitorCog,
   MoonStar,
-  RefreshCcw,
+  RefreshCw,
   Sun,
 } from "lucide-react"
 import { useTheme } from "next-themes"
@@ -160,10 +160,10 @@ function NavUserMain({
         </div>
         <Button
           variant="outline"
-          className="h-8 w-full rounded-lg"
+          className="group h-8 w-full rounded-lg"
           onClick={handleToggleCompany}
         >
-          <RefreshCcw />
+          <RefreshCw className="group-hover:animate-spin" />
           {i18n.t("nav-user.switch-company")}
         </Button>
       </DropdownMenuLabel>
@@ -199,8 +199,8 @@ function NavUserMain({
                   <ToggleGroupItem
                     value="system"
                     className={cn(
-                      "size-6 rounded-full p-0",
-                      theme === "system" && "border shadow-sm"
+                      "size-6 rounded-full p-0 hover:scale-105",
+                      theme === "system" && "bg-accent border shadow-sm"
                     )}
                     aria-label="System theme"
                   >
@@ -216,8 +216,8 @@ function NavUserMain({
                   <ToggleGroupItem
                     value="light"
                     className={cn(
-                      "size-6 rounded-full p-0",
-                      theme === "light" && "border shadow-sm"
+                      "size-6 rounded-full p-0 hover:scale-105",
+                      theme === "light" && "bg-accent border shadow-sm"
                     )}
                     aria-label="Light theme"
                   >
@@ -233,8 +233,8 @@ function NavUserMain({
                   <ToggleGroupItem
                     value="dark"
                     className={cn(
-                      "size-6 rounded-full p-0",
-                      theme === "dark" && "border shadow-sm"
+                      "size-6 rounded-full p-0 hover:scale-105",
+                      theme === "dark" && "bg-accent border shadow-sm"
                     )}
                     aria-label="Dark theme"
                   >

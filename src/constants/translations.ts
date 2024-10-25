@@ -5,7 +5,7 @@ export const translations = {
     registeredEvents: "Registered Events",
     sidebar: {
       title: "Platform",
-      main: "Principal",
+      home: "Home",
       favorites: "Favorites",
       "my-events": "My Events",
       notifications: "Notifications",
@@ -20,7 +20,7 @@ export const translations = {
       cancel: "Cancel",
     },
     title: {
-      main: "Main",
+      home: "Home",
       favorites: "Favorites",
       "my-events": "My Events",
       notifications: "Notifications",
@@ -90,7 +90,7 @@ export const translations = {
     registeredEvents: "Eventos Registrados",
     sidebar: {
       title: "Plataforma",
-      main: "Principal",
+      home: "Inicio",
       favorites: "Favoritos",
       "my-events": "Mis Eventos",
       notifications: "Notificaciones",
@@ -105,7 +105,7 @@ export const translations = {
       cancel: "Cancelar",
     },
     title: {
-      main: "Principal",
+      home: "Inicio",
       favorites: "Favoritos",
       "my-events": "Mis Eventos",
       notifications: "Notificaciones",

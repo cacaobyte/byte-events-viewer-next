@@ -7,7 +7,7 @@ import {
   LoginCredentials,
   logout,
   User,
-} from "@/services/auth-service"
+} from "@/services/user-service"
 
 interface AuthContextType {
   user: User | null

@@ -12,9 +12,9 @@ export function Header() {
 
   return (
     <>
-      <header className="border-border/95 bg-card/95 supports-[backdrop-filter]:bg-card/60 sticky top-0 z-30 flex h-14 items-center justify-between gap-4 border-b px-4 py-3 backdrop-blur sm:h-auto sm:px-6">
+      <header className="border-border/95 bg-card/10 supports-[backdrop-filter]:bg-card/10 sticky top-0 z-30 flex h-14 items-center justify-between gap-4 border-b px-4 py-3 backdrop-blur sm:h-auto sm:px-6">
         <Button
-          variant="secondary"
+          className="h-8"
           onClick={() => {
             router.back()
           }}

@@ -11,7 +11,6 @@ import {
   Map,
   PieChart,
   Send,
-  Settings,
   Tickets,
 } from "lucide-react"
 
@@ -24,15 +23,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar"
 
 import { Icons } from "../icons"
 import { NavLogin } from "./components/nav-login"
 import { NavMain } from "./components/nav-main"
-import { NavProjects } from "./components/nav-projects"
-import { NavSecondary } from "./components/nav-secondary"
 import { NavUser } from "./components/nav-user"
 
 // This is sample data.
@@ -44,8 +40,8 @@ const data = {
   },
   navMain: [
     {
-      title: "Principal",
-      i18n: "sidebar.main",
+      title: "Inicio",
+      i18n: "sidebar.home",
       url: "/",
       icon: Home,
     },
@@ -80,23 +76,6 @@ const data = {
       i18n: "sidebar.feedback",
       url: "/feedback",
       icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
     },
   ],
   companies: [

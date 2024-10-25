@@ -1,7 +1,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { TranslationKeyPaths } from "@/context/i18n-context"
+import { TranslationKeyPaths } from "@/context/i18n-provider"
 import { type LucideIcon } from "lucide-react"
 
 import { useI18n } from "@/hooks/use-i18n"

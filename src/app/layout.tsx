@@ -1,13 +1,13 @@
 import "@/styles/globals.css"
 
 import type { Metadata, Viewport } from "next"
+import { Providers } from "@/context/providers"
 import { GeistSans } from "geist/font/sans"
 import NextTopLoader from "nextjs-toploader"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
-import { Providers } from "@/components/layout/providers"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
 export const runtime = "edge"

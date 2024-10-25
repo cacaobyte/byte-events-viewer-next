@@ -1,9 +1,9 @@
 import * as React from "react"
-import { AuthProvider } from "@/context/auth-context"
-import { I18nProvider } from "@/context/i18n-context"
+import { AuthProvider } from "@/context/auth-provider"
+import { I18nProvider } from "@/context/i18n-provider"
 
-import { TooltipProvider } from "../ui/tooltip"
-import { ThemeProvider } from "./theme-toggle/theme-provider"
+import { TooltipProvider } from "../components/ui/tooltip"
+import { ThemeProvider } from "./theme-provider"
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
