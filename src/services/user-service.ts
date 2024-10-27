@@ -18,13 +18,8 @@ interface RegisterUser {
   username: string
   email: string
   password: string
-  status: string
   phone_number: string
-  profile_picture: string
   address: string
-  is_host: boolean
-  is_validator: boolean
-  is_admin: boolean
 }
 
 interface RegisterResponse {

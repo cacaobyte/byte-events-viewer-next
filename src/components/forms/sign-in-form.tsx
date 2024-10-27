@@ -128,7 +128,7 @@ export function SignInForm() {
           <p className="text-muted-foreground w-full text-center text-sm">
             {i18n.t("sign-in.dont-have-account")}&nbsp;
             <Link
-              href="/register"
+              href="/sign-up"
               className="hover:text-brand underline underline-offset-4"
             >
               {i18n.t("sign-in.sign-up")}

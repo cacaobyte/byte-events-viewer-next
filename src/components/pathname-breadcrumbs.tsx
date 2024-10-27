@@ -31,7 +31,7 @@ export function PathnameBreadcrumbs() {
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link className="flex items-center" href="/">
-              <Home className="mr-1 size-4" />
+              <Home className="mr-2 size-4" />
               {i18n.t("title.home")}
             </Link>
           </BreadcrumbLink>
