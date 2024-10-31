@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
 import { CalendarDays, Clock, Heart, MapPin, Share2, Users } from "lucide-react"
@@ -54,13 +55,13 @@ export default function EventCard({
   }
 
   return (
-    <Card className="mx-auto max-w-sm overflow-hidden transition-all duration-300 hover:shadow-lg">
+    <Card className="w-full">
       <CardHeader className="p-0">
         <div className="relative">
           <img
-            src={imageUrl}
+            src={"/placeholder.svg"}
             alt={title}
-            className="h-48 w-full object-cover"
+            className="h-48 w-full rounded-t-lg object-cover"
           />
           <div className="absolute right-2 top-2 flex gap-2">
             <Badge variant="secondary" className="bg-black/50 text-white">
@@ -79,7 +80,7 @@ export default function EventCard({
         </div>
       </CardHeader>
       <CardContent className="p-4">
-        <h2 className="mb-2 line-clamp-2 text-xl font-bold">{title}</h2>
+        <h2 className="mb-2 line-clamp-2 text-lg font-bold">{title}</h2>
         <div className="text-muted-foreground mb-2 flex items-center text-sm">
           <CalendarDays className="mr-2 size-4" />
           {formatDate(date)}

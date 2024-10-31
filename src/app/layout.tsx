@@ -75,7 +75,7 @@ export default async function RootLayout({
       <head />
       <body
         className={cn(
-          "bg-background min-h-screen antialiased",
+          "bg-background min-h-svh antialiased",
           GeistSans.className
         )}
       >

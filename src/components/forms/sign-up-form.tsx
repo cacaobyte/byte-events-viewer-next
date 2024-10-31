@@ -22,6 +22,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Icons } from "@/components/icons"
 
+import LocationSearch from "../location-search"
+
 export function SignUpForm() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
@@ -58,7 +60,7 @@ export function SignUpForm() {
   const onSubmit = async (data: RegisterFormValue) => {
     setLoading(true)
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulating API call
+      await new Promise((resolve) => setTimeout(resolve, 1000))
       addUser(data.username, "token")
       router.push("/")
     } catch (error) {
@@ -69,128 +71,133 @@ export function SignUpForm() {
   }
 
   return (
-    <Card className="w-full max-w-[450px] space-y-4 p-4">
-      <CardHeader className="space-y-2 text-center">
-        <Icons.logo className="mx-auto size-6" />
-        <h1 className="text-2xl font-semibold tracking-tight">
-          {i18n.t("sign-up.title")}
-        </h1>
-        <p className="text-muted-foreground text-sm">
-          {i18n.t("sign-up.description")}
-        </p>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{i18n.t("sign-up.username-label")}</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      placeholder={i18n.t("sign-up.username-placeholder")}
-                      disabled={loading}
-                      {...field}
+    <>
+      <Card className="container max-h-[calc(80svh)] max-w-2xl overflow-y-auto p-0 lg:p-6">
+        <CardHeader className="space-y-2 text-center">
+          <Icons.logo className="mx-auto size-6" />
+          <h1 className="text-2xl font-semibold tracking-tight">
+            {i18n.t("sign-up.title")}
+          </h1>
+          <p className="text-muted-foreground text-sm">
+            {i18n.t("sign-up.description")}
+          </p>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{i18n.t("sign-up.username-label")}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          placeholder={i18n.t("sign-up.username-placeholder")}
+                          disabled={loading}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{i18n.t("sign-up.email-label")}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder={i18n.t("sign-up.email-placeholder")}
+                          disabled={loading}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{i18n.t("sign-up.password-label")}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder={i18n.t("sign-up.password-placeholder")}
+                          disabled={loading}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="phone_number"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        {i18n.t("sign-up.phone-number-label")}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="tel"
+                          placeholder={i18n.t(
+                            "sign-up.phone-number-placeholder"
+                          )}
+                          disabled={loading}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <FormField
+                control={form.control}
+                name="address"
+                render={({ field }) => (
+                  <FormItem>
+                    <LocationSearch
+                      onChange={(location) => field.onChange(location)}
+                      value={field.value}
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{i18n.t("sign-up.email-label")}</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder={i18n.t("sign-up.email-placeholder")}
-                      disabled={loading}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{i18n.t("sign-up.password-label")}</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="password"
-                      placeholder={i18n.t("sign-up.password-placeholder")}
-                      disabled={loading}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="phone_number"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{i18n.t("sign-up.phone-number-label")}</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="tel"
-                      placeholder={i18n.t("sign-up.phone-number-placeholder")}
-                      disabled={loading}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="address"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{i18n.t("sign-up.address-label")}</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      placeholder={i18n.t("sign-up.address-placeholder")}
-                      disabled={loading}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button disabled={loading} className="w-full" type="submit">
-              {loading
-                ? i18n.t("sign-up.submitting")
-                : i18n.t("sign-up.submit-button")}
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-      <CardFooter>
-        <p className="text-muted-foreground w-full text-center text-sm">
-          {i18n.t("sign-up.already-have-account")}{" "}
-          <Link
-            href="/sign-in"
-            className="hover:text-primary underline underline-offset-4"
-          >
-            {i18n.t("sign-up.sign-in")}
-          </Link>
-        </p>
-      </CardFooter>
-    </Card>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button disabled={loading} className="w-full" type="submit">
+                {loading
+                  ? i18n.t("sign-up.submitting")
+                  : i18n.t("sign-up.submit-button")}
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+        <CardFooter>
+          <p className="text-muted-foreground w-full text-center text-sm">
+            {i18n.t("sign-up.already-have-account")}{" "}
+            <Link
+              href="/sign-in"
+              className="hover:text-primary underline underline-offset-4"
+            >
+              {i18n.t("sign-up.sign-in")}
+            </Link>
+          </p>
+        </CardFooter>
+      </Card>
+    </>
   )
 }

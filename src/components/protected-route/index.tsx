@@ -35,7 +35,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="flex size-full items-center justify-center">
+      <div className="flex size-full items-center justify-center px-4">
         <Card className="w-full max-w-md">
           <CardHeader className="flex items-center justify-center">
             <Skeleton className="h-12 w-20 rounded-lg" />
@@ -58,7 +58,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (!user) {
     return (
-      <div className="flex size-full items-center justify-center">
+      <div className="flex size-full items-center justify-center px-4">
         <Card className="w-full max-w-md">
           <CardHeader className="flex items-center justify-center">
             <div className="bg-primary flex items-center justify-center rounded-lg px-6 py-2">

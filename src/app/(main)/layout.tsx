@@ -1,16 +1,8 @@
 "use client"
 
-import Link from "next/link"
+import * as React from "react"
 
 import { useDetectOS } from "@/hooks/use-detect-os"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import {
@@ -34,10 +26,10 @@ export default function MainLayout({
   const os = useDetectOS()
 
   return (
-    <SidebarProvider className="max-h-screen">
+    <SidebarProvider className="max-h-svh">
       <AppSidebar />
 
-      <SidebarInset className="border-border border p-4 pt-0">
+      <SidebarInset className="border-border overflow-hidden border p-4 pt-0">
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
           <Tooltip>
             <TooltipTrigger asChild>
@@ -59,10 +51,8 @@ export default function MainLayout({
           <Separator orientation="vertical" className="mr-2 h-4" />
           <PathnameBreadcrumbs />
         </header>
-        <ScrollArea className="bg-muted flex size-full rounded-lg">
-          <div className="flex size-full flex-col items-center p-4 pt-0">
-            {children}
-          </div>
+        <ScrollArea className="bg-muted flex h-full rounded-lg">
+          {children}
         </ScrollArea>
       </SidebarInset>
     </SidebarProvider>
