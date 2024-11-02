@@ -1,8 +1,7 @@
 import axios, { AxiosInstance } from "axios"
 
 const apiClient: AxiosInstance = axios.create({
-  // baseURL: "https://events.cacaobyte.com/api/v1",
-  baseURL: "http://127.0.0.1:50000/api/v1",
+  baseURL: "https://events.cacaobyte.com/api/v1",
   timeout: 10000,
 })
 
