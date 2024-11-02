@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/tooltip"
 import useFetch from "@/hooks/use-fetch"
 import { getDecryptedToken } from "@/lib/utils"
+import QRModal from "@/app/(main)/my-events/qrCode"
 
 interface EventCardProps {
   id: string
@@ -68,6 +69,16 @@ export default function EventCard({
 
   // Usar el hook useFetch para la solicitud POST
   const [, , error, fetchData] = useFetch<SuscribedResponse>("/manager/tickets/events/subscribe", "POST");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleSuscribed = async () => {
     try {
@@ -181,6 +192,10 @@ export default function EventCard({
           <Button className={`${!isFavorite ? 'bg-blue-500' : 'bg-red-500'}`} size="sm" onClick={handleSuscribed}>
             {isFavorite ? 'Desuscribirme' : 'Suscribirme'}
           </Button>
+          {isFavorite && <Button variant="outline" size="sm" onClick={handleOpenModal}>
+            Ver QR
+          </Button>}
+            {isModalOpen && <QRModal id={id} onClose={handleCloseModal} />}
         </div>
       </CardFooter>
     </Card>
