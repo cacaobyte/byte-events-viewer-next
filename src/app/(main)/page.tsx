@@ -98,14 +98,14 @@ export default function PrincipalPage() {
       <div className="bg-muted/95 supports-[backdrop-filter]:bg-muted/50 sticky top-0 z-[1] rounded-t-lg backdrop-blur">
         <div className="container mx-auto p-2 lg:p-4">
           <div className="flex items-center gap-2">
-            <div className="relative grow">
+            {/* <div className="relative grow">
               <Input
                 type="search"
                 placeholder="Buscar eventos..."
                 className="w-full pl-10 pr-4"
               />
               <Search className="text-muted-foreground absolute left-3 top-1/2 size-4 -translate-y-1/2" />
-            </div>
+            </div> */}
             <Drawer open={isOpen} onOpenChange={setIsOpen}>
               <DrawerTrigger asChild>
                 <Button variant="outline" className="lg:hidden">

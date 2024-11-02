@@ -166,7 +166,7 @@ export default function EventCard({
               </TooltipContent>
             </Tooltip>
           </TooltipProvider> */}
-          <TooltipProvider>
+          {/* <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -177,7 +177,7 @@ export default function EventCard({
                 <p>Compartir evento</p>
               </TooltipContent>
             </Tooltip>
-          </TooltipProvider>
+          </TooltipProvider> */}
           <Button className={`${!isFavorite ? 'bg-blue-500' : 'bg-red-500'}`} size="sm" onClick={handleSuscribed}>
             {isFavorite ? 'Desuscribirme' : 'Suscribirme'}
           </Button>
