@@ -48,24 +48,24 @@ const data = {
       url: "/",
       icon: Home,
     },
-    {
-      title: "Favoritos",
-      i18n: "sidebar.favorites",
-      url: "/favorites",
-      icon: Heart,
-    },
+    // {
+    //   title: "Favoritos",
+    //   i18n: "sidebar.favorites",
+    //   url: "/favorites",
+    //   icon: Heart,
+    // },
     {
       title: "Mis Eventos",
       i18n: "sidebar.my-events",
       url: "/my-events",
       icon: Tickets,
     },
-    {
-      title: "Notificaciones",
-      i18n: "sidebar.notifications",
-      url: "/notifications",
-      icon: Bell,
-    },
+    // {
+    //   title: "Notificaciones",
+    //   i18n: "sidebar.notifications",
+    //   url: "/notifications",
+    //   icon: Bell,
+    // },
   ],
   navSecondary: [
     {
@@ -87,16 +87,16 @@ const data = {
       logo: "/logos.svg",
       type: "public",
     },
-    {
-      name: "Design Engineering",
-      logo: "/logos.svg",
-      type: "private",
-    },
-    {
-      name: "Sales & Marketing",
-      logo: "/logos.svg",
-      type: "private",
-    },
+    // {
+    //   name: "Design Engineering",
+    //   logo: "/logos.svg",
+    //   type: "private",
+    // },
+    // {
+    //   name: "Sales & Marketing",
+    //   logo: "/logos.svg",
+    //   type: "private",
+    // },
   ],
 }
 
@@ -142,7 +142,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         {/* <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
       </SidebarContent>
       <SidebarFooter>
-        {!user && open && <NavLogin />}
+        {!localStorage.getItem('userName') && open && <NavLogin />}
         <NavUser user={data.user} companies={data.companies} />
       </SidebarFooter>
       {/* <SidebarRail /> */}

@@ -16,9 +16,76 @@ import {
 import { Input } from "@/components/ui/input"
 import EventCard from "@/components/event-card"
 import EventFilters from "@/components/event-filters"
+import useFetch from "@/hooks/use-fetch"
+import { getDecryptedToken } from "@/lib/utils"
+
+interface Event {
+  id_event: number
+  event_name: string
+  start_time: Date // Puedes usar Date si prefieres manejar fechas como objetos de Date
+  location: { position: string, address: string }[]
+  is_public: boolean
+  is_free: boolean
+  status_event: string
+  hosts: {
+    host_name: string,
+    host_picture: string
+  }
+  event_categories: {
+    id_event_category: number
+    name_category: string
+  }
+  img_url: { principal: string }[]
+  _count: {
+    event_suscriptions: number
+  }
+  has_active_subscription: boolean
+}
+
 
 export default function PrincipalPage() {
   const [isOpen, setIsOpen] = React.useState(false)
+  // const [ events, loading, error ] = useFetch<Event[]>("/manager/tickets/events/feed")
+  const [, , error, fetchData] = useFetch<Event>("/manager/tickets/events/feed", "POST");
+  const [events, setEvents] = React.useState<Event[]>([])
+
+  const validateRoute = async () => {
+    try {
+      const eventsInfo = await fetchData({
+        headers: {
+          Authorization: `Bearer ${getDecryptedToken()}`,
+        },
+      });
+
+      console.log("eventsInfo:", eventsInfo)
+
+    } catch (error) {
+      console.log("error:", error)
+    }
+    
+  }
+
+  const handleFilterChange = async (filters) => {
+    // Aquí puedes manejar los datos de los filtros
+    // Por ejemplo, hacer una llamada a una API para obtener los eventos filtrados
+    try {
+      const eventsInfo = await fetchData({
+        headers: {
+          Authorization: `Bearer ${getDecryptedToken()}`,
+        },
+        body: filters
+      });
+
+      setEvents(eventsInfo)
+
+    } catch (error) {
+      console.log("error:", error)
+    }
+  }
+
+  React.useEffect(() => {
+    handleFilterChange({})
+  }, [])
 
   return (
     <>
@@ -66,8 +133,21 @@ export default function PrincipalPage() {
           {/* Events section - now full width on mobile and left on desktop */}
           <section className="order-1 grow lg:order-1">
             <div className="space-y-4">
-              {Array.from({ length: 10 }).map((_, index) => (
-                <EventCard key={index} />
+              {events && events.map((event, index) => (
+                <EventCard
+                  key={index}
+                  id={event.id_event.toString()}
+                  title={event.event_name}
+                  date={event.start_time}
+                  location={event.location[0].address}
+                  imageUrl={event.img_url[0].principal}
+                  attendees={event._count.event_suscriptions}
+                  isFavorite={event.has_active_subscription}
+                  isFree={event.is_free}
+                  organizerName={event.hosts.host_name}
+                  organizerAvatar={event.hosts.host_picture}
+                  category={event.event_categories.name_category}
+                />
               ))}
             </div>
           </section>
@@ -75,7 +155,7 @@ export default function PrincipalPage() {
           {/* Sidebar - now on the right for desktop */}
           <div className="order-2 lg:order-2 lg:w-2/5">
             <div className="sticky top-[71px] hidden lg:block">
-              <EventFilters />
+              <EventFilters onFilterChange={handleFilterChange} />
             </div>
           </div>
         </div>

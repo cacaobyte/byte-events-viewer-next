@@ -29,6 +29,8 @@ interface EventCardProps {
   category: string
   attendees: number
   price: number
+  isFree: boolean
+  isFavorite: boolean
 }
 
 export default function EventCard({
@@ -43,8 +45,10 @@ export default function EventCard({
   category = "Música",
   attendees = 250,
   price = 500,
+  isFree = false,
+  isFavorite = false,
 }: EventCardProps) {
-  const [isFavorite, setIsFavorite] = useState(false)
+  // const [isFavorite, setIsFavorite] = useState(false)
 
   const formatDate = (date: Date) => {
     return format(date, "d 'de' MMMM, yyyy", { locale: es })
@@ -59,7 +63,7 @@ export default function EventCard({
       <CardHeader className="p-0">
         <div className="relative">
           <img
-            src={"/placeholder.svg"}
+            src={imageUrl}
             alt={title}
             className="h-48 w-full rounded-t-lg object-cover"
           />
@@ -67,7 +71,7 @@ export default function EventCard({
             <Badge variant="secondary" className="bg-black/50 text-white">
               {category}
             </Badge>
-            {price === 0 ? (
+            {/* {price === 0 || isFree ? (
               <Badge variant="secondary" className="bg-green-500 text-white">
                 Gratis
               </Badge>
@@ -75,7 +79,7 @@ export default function EventCard({
               <Badge variant="secondary" className="bg-blue-500 text-white">
                 ${price}
               </Badge>
-            )}
+            )} */}
           </div>
         </div>
       </CardHeader>
@@ -109,7 +113,7 @@ export default function EventCard({
           <span className="text-sm font-semibold">{organizerName}</span>
         </div>
         <div className="flex space-x-2">
-          <TooltipProvider>
+          {/* <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -128,7 +132,7 @@ export default function EventCard({
                 </p>
               </TooltipContent>
             </Tooltip>
-          </TooltipProvider>
+          </TooltipProvider> */}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>

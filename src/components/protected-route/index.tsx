@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { use, useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { TranslationKeyPaths } from "@/context/i18n-provider"
@@ -12,6 +12,8 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 
 import { Icons } from "../icons"
 import { Skeleton } from "../ui/skeleton"
+import useFetch from "@/hooks/use-fetch"
+import { getDecryptedToken } from "@/lib/utils"
 
 const screenTitles: Record<string, TranslationKeyPaths> = {
   "/favorites": "protected-route.favorites",
@@ -19,18 +21,38 @@ const screenTitles: Record<string, TranslationKeyPaths> = {
   "/notifications": "protected-route.notifications",
 }
 
+interface validateRouteResponse {
+  status: string
+};
+
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
-  const { user } = useAuth()
   const pathname = usePathname()
   const i18n = useI18n()
+  const [, , error, fetchData] = useFetch<validateRouteResponse>("/users/viewer/validateRoute");
+  const [isValidRoute, setIsValidRoute] = useState(false)
+
+  const validateRoute = async () => {
+    try {
+      const info = await fetchData({
+        headers: {
+          Authorization: `Bearer ${getDecryptedToken()}`,
+        },
+      });
+
+      if (info.status === "GRANTED") {
+        setIsValidRoute(true)
+      } else {
+        setIsValidRoute(false)
+      }
+    } catch (error) {
+      console.log("error:", error)
+    }
+    setIsLoading(false)
+  }
 
   useEffect(() => {
-    const checkAuth = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      setIsLoading(false)
-    }
-    checkAuth()
+    validateRoute()
   }, [])
 
   if (isLoading) {
@@ -56,7 +78,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
     )
   }
 
-  if (!user) {
+  if (!isValidRoute) {
     return (
       <div className="flex size-full items-center justify-center px-4">
         <Card className="w-full max-w-md">
@@ -79,11 +101,11 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
             />
           </CardContent>
           <CardFooter className="flex flex-col gap-3">
-            <Button className="w-full" variant="default" asChild>
+            {/* <Button className="w-full" variant="default" asChild>
               <Link href="/sign-up">
                 <span>{i18n.t("protected-route.sign-up")}</span>
               </Link>
-            </Button>
+            </Button> */}
             <Button className="w-full" variant="outline" asChild>
               <Link href="/sign-in">
                 <span>{i18n.t("protected-route.sign-in")}</span>

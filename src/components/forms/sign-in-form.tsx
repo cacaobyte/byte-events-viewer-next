@@ -21,6 +21,15 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Icons } from "@/components/icons"
+import useFetch from "@/hooks/use-fetch"
+import { storeEncryptedToken } from "@/lib/utils"
+
+interface LoginResponse {
+  token: string
+  username: string
+  email: string
+  profile_picture: string
+};
 
 export function SignInForm() {
   const router = useRouter()
@@ -53,10 +62,29 @@ export function SignInForm() {
     defaultValues,
   })
 
+  // Usar el hook useFetch para la solicitud POST
+  const [, , error, fetchData] = useFetch<LoginResponse>("/users/login", "POST");
+
   const onSubmit = async (data: UserFormValue) => {
-    router.push("/")
-    addUser("Mario Arita", "token")
-  }
+    setLoading(true);
+    try {
+      // Realizar la solicitud POST
+      const response = await fetchData(data);
+
+      // Aquí puedes manejar la respuesta, por ejemplo, guardar el usuario y redirigir
+      if (response.token && response.username) {
+        storeEncryptedToken(response.token);
+        localStorage.setItem('userName', response.username);
+        localStorage.setItem('email', response.email);
+        localStorage.setItem('profile_picture', response.profile_picture);
+        router.push("/");
+      }
+    } catch (err) {
+      console.error("Error al iniciar sesión: ", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -124,7 +152,7 @@ export function SignInForm() {
             </form>
           </Form>
         </CardContent>
-        <CardFooter>
+        {/* <CardFooter>
           <p className="text-muted-foreground w-full text-center text-sm">
             {i18n.t("sign-in.dont-have-account")}&nbsp;
             <Link
@@ -134,7 +162,7 @@ export function SignInForm() {
               {i18n.t("sign-in.sign-up")}
             </Link>
           </p>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
     </>
   )

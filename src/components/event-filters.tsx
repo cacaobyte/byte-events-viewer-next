@@ -62,6 +62,7 @@ export default function EventFilters({
 
   const onSubmit = (data: FilterValues) => {
     onFilterChange(data)
+    // console.log("Filters", data)
   }
 
   return (
@@ -150,7 +151,7 @@ export default function EventFilters({
               </div>
             </div>
 
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <Label htmlFor="category">Categoría</Label>
               <Controller
                 name="category"
@@ -170,7 +171,7 @@ export default function EventFilters({
                   </Select>
                 )}
               />
-            </div>
+            </div> */}
 
             <Controller
               name="location"

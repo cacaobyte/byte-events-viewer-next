@@ -22,12 +22,12 @@ export function NavLogin() {
         <CardDescription>{i18n.t("nav-login.description")}</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-2.5 p-3">
-        <Link
+        {/* <Link
           className={cn(buttonVariants({ size: "sm" }), "h-8")}
           href="/sign-up"
         >
           {i18n.t("nav-login.sign-up")}
-        </Link>
+        </Link> */}
         <Link
           className={cn(
             buttonVariants({ variant: "outline", size: "sm" }),

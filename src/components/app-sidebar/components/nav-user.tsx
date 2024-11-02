@@ -93,14 +93,14 @@ export function NavUser({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="size-8 rounded-lg">
-                <AvatarImage src={user.companyLogo} alt={user.companyName} />
+                <AvatarImage src={localStorage.getItem('profile_picture') || ''} alt={user.companyName} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">
-                  {user.companyName}
+                  {localStorage.getItem('userName') || 'User Name'}
                 </span>
-                <span className="truncate text-xs">{user.companyType}</span>
+                {/* <span className="truncate text-xs">{user.companyType}</span> */}
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -150,10 +150,10 @@ function NavUserMain({
       <DropdownMenuLabel className="font-normal">
         <div className="flex h-8 items-center justify-between px-1 text-gray-500">
           <span className="text-[13px] font-medium leading-[16px]">
-            marioarita502@gmail.com
+            {localStorage.getItem('email') || 'email@email.com'}
           </span>
         </div>
-        <div className="flex items-center gap-2 py-1.5 text-left text-sm">
+        {/* <div className="flex items-center gap-2 py-1.5 text-left text-sm">
           <Avatar className="size-8 rounded-lg">
             <AvatarImage src={user.avatar} alt={user.name} />
             <AvatarFallback className="rounded-lg">CN</AvatarFallback>
@@ -162,18 +162,18 @@ function NavUserMain({
             <span className="truncate font-semibold">{user.name}</span>
             <span className="truncate text-xs">{user.email}</span>
           </div>
-        </div>
-        <Button
+        </div> */}
+        {/* <Button
           variant="outline"
           className="group h-8 w-full rounded-lg"
           onClick={handleToggleCompany}
         >
           <RefreshCw className="group-hover:animate-spin" />
           {i18n.t("nav-user.switch-company")}
-        </Button>
+        </Button> */}
       </DropdownMenuLabel>
 
-      <DropdownMenuSeparator />
+      {/* <DropdownMenuSeparator />
 
       <DropdownMenuGroup>
         <DropdownMenuItem className="mx-2">
@@ -182,7 +182,7 @@ function NavUserMain({
         </DropdownMenuItem>
       </DropdownMenuGroup>
 
-      <DropdownMenuSeparator />
+      <DropdownMenuSeparator /> */}
 
       <DropdownMenuGroup>
         <DropdownMenuLabel>{i18n.t("nav-user.preferences")}</DropdownMenuLabel>
@@ -253,7 +253,7 @@ function NavUserMain({
             </ToggleGroup>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuLabel className="py-0 font-normal">
+        {/* <DropdownMenuLabel className="py-0 font-normal">
           <div className="flex items-center justify-between gap-2 px-1 py-1.5 text-left text-sm">
             <span className="text-sm font-normal">
               {i18n.t("nav-user.language")}
@@ -279,7 +279,7 @@ function NavUserMain({
               </SelectContent>
             </Select>
           </div>
-        </DropdownMenuLabel>
+        </DropdownMenuLabel> */}
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuLabel asChild>
