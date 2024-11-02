@@ -16,6 +16,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import useFetch from "@/hooks/use-fetch"
+import { getDecryptedToken } from "@/lib/utils"
 
 interface EventCardProps {
   id: string
@@ -31,6 +33,11 @@ interface EventCardProps {
   price: number
   isFree: boolean
   isFavorite: boolean
+  onRefresh?: () => void
+}
+
+interface SuscribedResponse {
+  status: string
 }
 
 export default function EventCard({
@@ -47,6 +54,7 @@ export default function EventCard({
   price = 500,
   isFree = false,
   isFavorite = false,
+  onRefresh,
 }: EventCardProps) {
   // const [isFavorite, setIsFavorite] = useState(false)
 
@@ -56,6 +64,31 @@ export default function EventCard({
 
   const formatTime = (date: Date) => {
     return format(date, "HH:mm")
+  }
+
+  // Usar el hook useFetch para la solicitud POST
+  const [, , error, fetchData] = useFetch<SuscribedResponse>("/manager/tickets/events/subscribe", "POST");
+
+  const handleSuscribed = async () => {
+    try {
+      const response = await fetchData({
+        headers: {
+          Authorization: `Bearer ${getDecryptedToken()}`,
+        },
+        body: {
+        isSuscribed: !isFavorite,
+        idEvent: id
+        }
+      });
+
+      console.log("response:", response)
+
+      if (onRefresh) {
+        onRefresh();
+      }
+    } catch (error) {
+      console.log("error:", error)
+    }
   }
 
   return (
@@ -145,8 +178,8 @@ export default function EventCard({
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <Button variant="default" size="sm">
-            Ver detalles
+          <Button className={`${!isFavorite ? 'bg-blue-500' : 'bg-red-500'}`} size="sm" onClick={handleSuscribed}>
+            {isFavorite ? 'Desuscribirme' : 'Suscribirme'}
           </Button>
         </div>
       </CardFooter>

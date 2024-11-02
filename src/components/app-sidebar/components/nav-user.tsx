@@ -12,7 +12,7 @@ import {
 } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import { cn } from "@/lib/utils"
+import { cn, getDecryptedToken } from "@/lib/utils"
 import { useI18n } from "@/hooks/use-i18n"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -46,6 +46,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Icons } from "@/components/icons"
+import useFetch from "@/hooks/use-fetch"
 
 interface User {
   name: string
@@ -145,6 +146,17 @@ function NavUserMain({
 }) {
   const { setTheme, theme } = useTheme()
   const i18n = useI18n()
+
+  const handleLogOut = async () => {
+    try {
+      console.log("log out")
+      localStorage.clear()
+      window.location.replace("/")
+    } catch (error) {
+      console.log("error:", error)
+    }
+  }
+
   return (
     <>
       <DropdownMenuLabel className="font-normal">
@@ -283,7 +295,7 @@ function NavUserMain({
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuLabel asChild>
-        <Button className="h-8 w-full rounded-lg">
+        <Button className="h-8 w-full rounded-lg" onClick={()=>handleLogOut()}>
           <LogOut />
           {i18n.t("nav-user.logout")}
         </Button>

@@ -83,6 +83,11 @@ export default function PrincipalPage() {
     }
   }
 
+    // Function to refresh events
+    const refreshEvents = () => {
+      handleFilterChange({});
+    };
+
   React.useEffect(() => {
     handleFilterChange({})
   }, [])
@@ -147,6 +152,7 @@ export default function PrincipalPage() {
                   organizerName={event.hosts.host_name}
                   organizerAvatar={event.hosts.host_picture}
                   category={event.event_categories.name_category}
+                  onRefresh={refreshEvents}
                 />
               ))}
             </div>
